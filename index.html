@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💌 SURAT MAF 3D - Untuk Sayangku</title>
+    
+    <!-- BOOTSTRAP 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS ANIMATION -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff8fa3;
+            --accent: #9d4edd;
+            --gold: #ffd700;
+            --dark: #0a0a1a;
+            --gradient: linear-gradient(135deg, #ff4d6d 0%, #ff8fa3 100%);
+            --neon-glow: 0 0 40px rgba(255, 77, 109, 0.6);
+            --shadow-3d: 0 25px 50px rgba(255, 77, 109, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* COSMIC BACKGROUND */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+            z-index: -999;
+        }
+
+        /* ENVELOPE SECTION */
+        .envelope-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .envelope-content {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 100;
+        }
+
+        .main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 15px 30px rgba(255, 77, 109, 0.3);
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* AMPLOP 3D YANG BISA DIKLIK - BENERAN WORK! */
+        .envelope-container {
+            position: relative;
+            margin: 2rem auto;
+            max-width: 600px;
+            cursor: pointer;
+        }
+
+        .envelope-3d {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: envelopeFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes envelopeFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .envelope-body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 15px;
+            transform: translateZ(20px);
+            box-shadow: var(--shadow-3d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(45deg, #ff4d6d, #ff8fa3);
+            top: 0;
+            left: 0;
+            border-radius: 15px 15px 50% 50%;
+            transform-origin: top;
+            transition: transform 1s;
+            z-index: 2;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .envelope-seal {
+            width: 90px;
+            height: 90px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: sealGlow 2s ease-in-out infinite;
+            box-shadow: 0 0 40px gold;
+            cursor: pointer !important;
+        }
+
+        @keyframes sealGlow {
+            0%, 100% { 
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 0 40px gold;
+            }
+            50% { 
+                transform: translateX(-50%) scale(1.1);
+                box-shadow: 0 0 60px gold;
+            }
+        }
+
+        .click-hint {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            animation: hintPulse 2s infinite;
+        }
+
+        @keyframes hintPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* LETTER SECTION */
+        .letter-section {
+            min-height: 100vh;
+            padding: 40px 0;
+            display: none;
+            position: relative;
+        }
+
+        .letter-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(30px);
+            border-radius: 30px;
+            padding: 60px;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            box-shadow: var(--shadow-3d);
+        }
+
+        .letter-container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: var(--gradient);
+            border-radius: 30px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: borderFlow 4s linear infinite;
+        }
+
+        @keyframes borderFlow {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.3; }
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid rgba(255, 77, 109, 0.3);
+        }
+
+        .letter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            animation: titleShimmer 3s infinite;
+        }
+
+        @keyframes titleShimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .letter-subtitle {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            opacity: 0.9;
+        }
+
+        /* CONTENT SECTIONS */
+        .section {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-left: 60px;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '💖';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.2); }
+        }
+
+        .section-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, transparent 0%, rgba(255, 77, 109, 0.3) 100%);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        /* PHOTO SECTION */
+        .photo-section {
+            margin: 60px auto;
+            max-width: 900px;
+        }
+
+        .photo-container {
+            width: 100%;
+            height: 500px;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            border: 4px solid transparent;
+            background: linear-gradient(45deg, var(--primary), var(--accent)) border-box;
+            box-shadow: var(--shadow-3d);
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .photo-container:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--neon-glow);
+        }
+
+        .photo-frame {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-container:hover .photo-img {
+            transform: scale(1.05);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+        }
+
+        .photo-container:hover .photo-overlay {
+            opacity: 1;
+        }
+
+        /* SIGNATURE */
+        .signature {
+            text-align: right;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .signature-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            animation: signatureFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes signatureFloat {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+
+        .signature-date {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* MUSIC PLAYER */
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            z-index: 1000;
+            border: 2px solid rgba(255, 77, 109, 0.4);
+            box-shadow: var(--shadow-3d);
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1s ease;
+        }
+
+        .music-player.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .music-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 160px;
+        }
+
+        .music-title {
+            font-weight: 600;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .music-artist {
+            color: var(--secondary);
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .music-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+            box-shadow: var(--neon-glow);
+        }
+
+        .volume-slider {
+            width: 120px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        /* FLOATING HEARTS */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -800;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0;
+            animation: floatHeart 20s linear infinite;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* RESPONSIVE BREAKPOINTS - BOOTSTRAP STYLE */
+        @media (max-width: 1200px) {
+            .main-title { font-size: 4rem; }
+            .letter-title { font-size: 3.5rem; }
+            .photo-container { height: 450px; }
+        }
+
+        @media (max-width: 992px) {
+            .main-title { font-size: 3.5rem; }
+            .letter-title { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
+            .photo-container { height: 400px; }
+            .letter-container { padding: 50px; }
+        }
+
+        @media (max-width: 768px) {
+            .main-title { font-size: 3rem; }
+            .subtitle { font-size: 1.3rem; }
+            .letter-title { font-size: 2.5rem; }
+            .section-title { 
+                font-size: 2rem;
+                padding-left: 50px;
+            }
+            .section-title::before { font-size: 2rem; }
+            .section-text { font-size: 1.1rem; }
+            .envelope-seal {
+                width: 75px;
+                height: 75px;
+                font-size: 2.5rem;
+            }
+            .photo-container { height: 350px; }
+            .letter-container { padding: 40px; }
+            .signature-name { font-size: 3rem; }
+            .music-player {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-title { font-size: 2.5rem; }
+            .subtitle { font-size: 1.1rem; }
+            .letter-title { font-size: 2rem; }
+            .section-title { 
+                font-size: 1.8rem;
+                padding-left: 45px;
+            }
+            .section-title::before { font-size: 1.8rem; }
+            .section-text { font-size: 1rem; }
+            .envelope-3d { height: 250px; }
+            .envelope-seal {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            .photo-container { height: 300px; }
+            .letter-container { padding: 30px; }
+            .signature-name { font-size: 2.5rem; }
+            .music-player {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                padding: 15px;
+            }
+            .music-info { min-width: auto; }
+        }
+
+        @media (max-width: 400px) {
+            .main-title { font-size: 2rem; }
+            .envelope-3d { height: 200px; }
+            .photo-container { height: 250px; }
+            .letter-container { padding: 20px; }
+            .music-btn { width: 45px; height: 45px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- COSMIC BACKGROUND -->
+    <div class="cosmic-bg"></div>
+    
+    <!-- FLOATING HEARTS -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <!-- AUDIO -->
+    <audio id="bgMusic" loop>
+        <source src="Firasat.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- ENVELOPE SECTION -->
+    <section class="envelope-section" id="envelopeSection">
+        <div class="container">
+            <div class="envelope-content" data-aos="fade-up">
+                <h1 class="main-title">Untuk Sayangku Tersayang 💌</h1>
+                <p class="subtitle">"Sebuah surat dari hati yang paling dalam<br>Klik segel hati untuk membuka amplop"</p>
+                
+                <div class="envelope-container" id="envelopeContainer">
+                    <div class="envelope-3d" id="envelope3d">
+                        <div class="envelope-body">
+                            <div class="envelope-flap" id="envelopeFlap"></div>
+                            <div class="envelope-seal" id="envelopeSeal">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="click-hint">
+                    <i class="fas fa-hand-point-up fa-2x"></i>
+                    <span>KLIK SEGEL HATI DI ATAS</span>
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- LETTER SECTION -->
+    <section class="letter-section" id="letterSection">
+        <div class="container">
+            <div class="letter-container" data-aos="fade-up" data-aos-delay="200">
+                <!-- HEADER -->
+                <div class="letter-header">
+                    <h1 class="letter-title">Surat Maaf dari Hati</h1>
+                    <p class="letter-subtitle">Ditulis dengan penuh penyesalan dan cinta</p>
+                </div>
+                
+                <!-- CONTENT -->
+                <div class="letter-content">
+                    <!-- INTRODUCTION -->
+                    <div class="section" data-aos="fade-right" data-aos-delay="300">
+                        <p class="section-text">
+                            Sayangku tersayang,<br><br>
+                            Dimas mau minta maaf yang <span class="highlight">sebesar-besarnya</span> untuk hari ini. 
+                            Dimas sadar ada beberapa hal yang dimas lakukan <span class="highlight">kurang tepat</span>, 
+                            dan Dimas benar-benar menyesal sudah membuat kamu tidak nyaman.
+                        </p>
+                    </div>
+                    
+                    <!-- POINT 1 -->
+                    <div class="section" data-aos="fade-left" data-aos-delay="400">
+                        <h2 class="section-title">Pertama, tentang momen saat kita berdua</h2>
+                        <p class="section-text">
+                            Dimas akui, di bagian ini Dimas terlalu <span class="highlight">egois</span>. 
+                            Dimas tidak memperhatikan perasaan dan kenyamanan kamu. Itu <span class="highlight">kesalahan besar</span> dari dimas, 
+                            dan Dimas janji ke depannya kita akan sama-sama menikmati setiap momen dengan 
+                            <span class="highlight">penuh keharmonisan</span>.
+                        </p>
+                    </div>
+                    
+                    <!-- POINT 2 -->
+                    <div class="section" data-aos="fade-right" data-aos-delay="500">
+                        <h2 class="section-title">Kedua, tentang foto yang Dimas ambil kemarin</h2>
+                        <p class="section-text">
+                            Sayang, sebenernya Dimas engga mau ribut soal ini. Dimas cuma pengen bahas 
+                            <span class="highlight">baik-baik</span> biar engga ada yang tersimpan di hati.<br><br>
+                            
+                            Sebenarnya, Dimas cuma pengen foto itu jadi <span class="highlight">kenangan pribadi</span> aja. 
+                            Karena itu kan Dimas yang fotoin pakai kamera, dan alhamdulillah hasilnya bagus kan? 
+                            Dimas cuma pengen simpan buat diri Dimas sendiri, sebagai bentuk 
+                            <span class="highlight">apresiasi</span> bahwa dimas punya pasangan secantik dan sebaik kamu. 
+                            Mungkin di bagian ini Dimas juga egois ya?
+                        </p>
+                    </div>
+                    
+                    <!-- PHOTO SECTION -->
+                    <div class="photo-section" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="photo-container" onclick="window.open('Nala.jpeg', '_blank')">
+                            <div class="photo-frame">
+                                <img src="Nala.jpeg" alt="Foto Kenangan Kita" class="photo-img" 
+                                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgNjAwIDQwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkaWVudCkiIHJ4PSIxNSIvPgo8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOHB4Ij5OYWxhLmpwZWc8L3RleHQ+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCIgeTE9IjAiIHgyPSI2MDAiIHkyPSI0MDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI2ZmNGRmZiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZjg4YTMiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4='">
+                                <div class="photo-overlay">
+                                    <div style="color: white; font-family: monospace; font-size: 0.9rem;">
+                                        Klik untuk melihat foto asli
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CONTINUATION -->
+                    <div class="section" data-aos="fade-up" data-aos-delay="700">
+                        <p class="section-text">
+                            Maafkan Dimas ya sayang. Ke depannya, kalau kamu mau Dimas post foto kita atau foto kamu, 
+                            Dimas akan dengan <span class="highlight">senang hati</span> melakukannya.<br><br>
+                            
+                            Terima kasih sudah berani menyampaikan kesalahan Dimas. Dimas sangat 
+                            <span class="highlight">menghargai</span> itu. Dimas pengen kita selalu terbuka seperti ini. 
+                            Jangan pendam-pendam lagi ya? Biar Dimas bisa belajar dan menjadi lebih baik.<br><br>
+                            
+                            Maafkan Dimas yang selalu melakukan kesalahan. Dimas 
+                            <span class="highlight">sayang banget</span> sama kamu, iloveyou sayangku.
+                        </p>
+                    </div>
+                    
+                    <!-- SIGNATURE -->
+                    <div class="signature" data-aos="fade-up" data-aos-delay="800">
+                        <div class="signature-name">Dimas 💖</div>
+                        <p class="signature-date">Dengan penuh penyesalan dan cinta</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- MUSIC PLAYER -->
+    <div class="music-player" id="musicPlayer">
+        <div class="music-info">
+            <div class="music-title">Firasat</div>
+            <div class="music-artist">Mendengarkan musik cinta...</div>
+        </div>
+        <div class="music-controls">
+            <button class="music-btn" id="playBtn" onclick="playMusic()">
+                <i class="fas fa-play"></i>
+            </button>
+            <button class="music-btn" id="pauseBtn" onclick="pauseMusic()" style="display: none;">
+                <i class="fas fa-pause"></i>
+            </button>
+            <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider">
+        </div>
+    </div>
+
+    <!-- AOS SCRIPT -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // ============================================
+        // INISIALISASI AOS ANIMATION
+        // ============================================
+        AOS.init({
+            duration: 1000,
+            once: false,
+            offset: 100
+        });
+
+        // ============================================
+        // BUAT FLOATING HEARTS
+        // ============================================
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const hearts = ['❤️', '💖', '💗', '💓', '💞', '💕', '💘', '💝'];
+            
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.animationDelay = `${Math.random() * 20}s`;
+                heart.style.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                container.appendChild(heart);
+            }
+        }
+
+        // ============================================
+        // FUNGSI BUKA AMPLOP - JAMINAN 100% WORK!
+        // ============================================
+        let isEnvelopeOpen = false;
+
+        function openEnvelope() {
+            if (isEnvelopeOpen) return;
+            isEnvelopeOpen = true;
+            
+            console.log("🎯 AMPLOP DIBUKA - SISTEM AKTIF!");
+            
+            const envelope = document.getElementById('envelope3d');
+            const flap = document.getElementById('envelopeFlap');
+            const seal = document.getElementById('envelopeSeal');
+            const envelopeSection = document.getElementById('envelopeSection');
+            const letterSection = document.getElementById('letterSection');
+            const musicPlayer = document.getElementById('musicPlayer');
+            
+            // 1. ANIMASI BUKA FLAP
+            flap.style.transform = 'rotateX(180deg)';
+            flap.style.transition = 'transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            
+            // 2. ANIMASI SEGEL HILANG
+            seal.style.transform = 'translateX(-50%) scale(0) rotate(720deg)';
+            seal.style.opacity = '0';
+            seal.style.transition = 'all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            
+            // 3. ANIMASI AMPLOP TERBANG
+            setTimeout(() => {
+                envelope.style.transform = 'translateY(-100vh) rotate(45deg) scale(0.5)';
+                envelope.style.opacity = '0';
+                envelope.style.transition = 'all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                
+                // 4. LEDAKAN HATI
+                createHeartExplosion();
+                
+                // 5. PINDAH KE SURAT
+                setTimeout(() => {
+                    envelopeSection.style.display = 'none';
+                    
+                    letterSection.style.display = 'block';
+                    setTimeout(() => {
+                        letterSection.style.opacity = '1';
+                        letterSection.style.transform = 'translateY(0)';
+                        letterSection.style.transition = 'all 1s ease-out';
+                        
+                        // Scroll ke atas
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        
+                        // Tampilkan music player
+                        setTimeout(() => {
+                            musicPlayer.classList.add('show');
+                            
+                            // Auto play musik
+                            setTimeout(() => {
+                                playMusic();
+                            }, 800);
+                        }, 500);
+                    }, 100);
+                }, 1500);
+            }, 1000);
+        }
+
+        // ============================================
+        // LEDAKAN HATI
+        // ============================================
+        function createHeartExplosion() {
+            const hearts = ['❤️', '💖', '💗', '💓', '💞'];
+            
+            for (let i = 0; i < 40; i++) {
+                const heart = document.createElement('div');
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.position = 'fixed';
+                heart.style.left = '50%';
+                heart.style.top = '50%';
+                heart.style.fontSize = `${Math.random() * 30 + 20}px`;
+                heart.style.opacity = '1';
+                heart.style.zIndex = '9999';
+                heart.style.pointerEvents = 'none';
+                heart.style.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                heart.style.transform = 'translate(-50%, -50%) scale(0)';
+                document.body.appendChild(heart);
+                
+                // Animasi ledakan
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 200 + 100;
+                const duration = Math.random() * 1.5 + 1;
+                
+                setTimeout(() => {
+                    heart.style.transition = `all ${duration}s cubic-bezier(0.175, 0.885, 0.32, 1.275)`;
+                    heart.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`;
+                    heart.style.opacity = '0';
+                    
+                    // Hapus setelah animasi
+                    setTimeout(() => {
+                        if (heart.parentNode) {
+                            heart.parentNode.removeChild(heart);
+                        }
+                    }, duration * 1000);
+                }, Math.random() * 200);
+            }
+        }
+
+        // ============================================
+        // MUSIK CONTROL
+        // ============================================
+        const audio = document.getElementById('bgMusic');
+        let isMusicPlaying = false;
+
+        function playMusic() {
+            audio.volume = document.getElementById('volumeSlider').value / 100;
+            
+            audio.play().then(() => {
+                isMusicPlaying = true;
+                updateMusicButtons();
+            }).catch(error => {
+                console.log("Autoplay prevented: ", error);
+                // Tampilkan tombol play
+                document.getElementById('playBtn').style.display = 'flex';
+                document.getElementById('pauseBtn').style.display = 'none';
+            });
+        }
+
+        function pauseMusic() {
+            audio.pause();
+            isMusicPlaying = false;
+            updateMusicButtons();
+        }
+
+        function updateMusicButtons() {
+            if (isMusicPlaying) {
+                document.getElementById('playBtn').style.display = 'none';
+                document.getElementById('pauseBtn').style.display = 'flex';
+            } else {
+                document.getElementById('playBtn').style.display = 'flex';
+                document.getElementById('pauseBtn').style.display = 'none';
+            }
+        }
+
+        // ============================================
+        // VOLUME CONTROL
+        // ============================================
+        document.getElementById('volumeSlider').addEventListener('input', function() {
+            audio.volume = this.value / 100;
+        });
+
+        // ============================================
+        // SETUP EVENT LISTENERS - INI YANG BIKIN BISA DIKLIK!
+        // ============================================
+        function setupEnvelopeClick() {
+            const envelopeSeal = document.getElementById('envelopeSeal');
+            const envelopeContainer = document.getElementById('envelopeContainer');
+            
+            console.log("Setting up envelope click listeners...");
+            
+            // 1. Click listener untuk segel
+            envelopeSeal.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log("Segel diklik!");
+                openEnvelope();
+            });
+            
+            // 2. Click listener untuk container amplop
+            envelopeContainer.addEventListener('click', function(e) {
+                console.log("Container amplop diklik!");
+                openEnvelope();
+            });
+            
+            // 3. Touch listener untuk mobile
+            envelopeSeal.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                console.log("Segel disentuh!");
+                openEnvelope();
+            }, { passive: false });
+            
+            // 4. Double tap protection
+            let lastTap = 0;
+            envelopeSeal.addEventListener('touchend', function(e) {
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTap;
+                if (tapLength < 500 && tapLength > 0) {
+                    e.preventDefault();
+                }
+                lastTap = currentTime;
+            });
+            
+            console.log("✅ Envelope click listeners setup complete!");
+        }
+
+        // ============================================
+        // INISIALISASI SEMUA
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("🔥 SISTEM SURAT MAF 3D - BOOTSTRAP EDITION READY!");
+            
+            // Setup floating hearts
+            createFloatingHearts();
+            
+            // Setup envelope click events - INI YANG PENTING!
+            setupEnvelopeClick();
+            
+            // Refresh AOS
+            AOS.refresh();
+            
+            // Setup photo error handling
+            const photoImg = document.querySelector('.photo-img');
+            if (photoImg) {
+                photoImg.onerror = function() {
+                    console.log("Foto Nala.jpeg tidak ditemukan");
+                };
+            }
+            
+            // Initialize audio volume
+            audio.volume = 0.7;
+            
+            // Update music buttons
+            updateMusicButtons();
+            
+            // Force cursor pointer untuk amplop
+            document.getElementById('envelopeSeal').style.cursor = 'pointer';
+            document.getElementById('envelopeContainer').style.cursor = 'pointer';
+            
+            console.log("✅ Semua sistem siap! Amplop bisa diklik!");
+        });
+
+        // ============================================
+        // HAMBATAN AUTOPLAY UNTUK MOBILE
+        // ============================================
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        document.addEventListener('click', function() {}, {passive: true});
+    </script>
+</body>
+</html>
